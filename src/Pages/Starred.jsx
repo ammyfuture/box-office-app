@@ -1,4 +1,4 @@
 const Starred = () => {
-  return <div>My Starred Page</div>;
+  return <div>Starred</div>;
 };
 export default Starred;
