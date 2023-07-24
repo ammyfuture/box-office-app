@@ -6,3 +6,4 @@ const getApi = async queryString => {
 };
 
 export const searchForShows = q => getApi(`/search/shows?q=${q}`);
+export const searchForPeople = q => getApi(`/search/people?q=${q}`);
