@@ -5,5 +5,7 @@ const getApi = async queryString => {
   return body;
 };
 
-export const searchForShows = q => getApi(`/search/shows?q=${q}`);
-export const searchForPeople = q => getApi(`/search/people?q=${q}`);
+export const searchForShows = query => getApi(`/search/shows?q=${query}`);
+export const searchForPeople = query => getApi(`/search/people?q=${query}`);
+
+export const getShowById = showId => getApi(`/shows/${showId}`);
