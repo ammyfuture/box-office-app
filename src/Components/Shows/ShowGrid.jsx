@@ -1,33 +1,36 @@
-import { useEffect, useReducer } from 'react';
+// import { useEffect, useReducer } from 'react';
 import ShowCards from './ShowCards';
+import { useStarredShow } from '../../lib/useStarredShows';
 
-const usePresistedReducer = (reducer, initalState, localStorageKey) => {
-  const [state, dispatch] = useReducer(reducer, initalState, inital => {
-    const presistedValue = localStorage.getItem(localStorageKey);
-    return presistedValue ? JSON.parse(presistedValue) : inital;
-  });
+// const usePresistedReducer = (reducer, initalState, localStorageKey) => {
+//   const [state, dispatch] = useReducer(reducer, initalState, inital => {
+//     const presistedValue = localStorage.getItem(localStorageKey);
+//     return presistedValue ? JSON.parse(presistedValue) : inital;
+//   });
 
-  useEffect(() => {
-    localStorage.setItem(localStorageKey, JSON.stringify(state));
-  }, [state, localStorageKey]);
+//   useEffect(() => {
+//     localStorage.setItem(localStorageKey, JSON.stringify(state));
+//   }, [state, localStorageKey]);
 
-  return [state, dispatch];
-};
+//   return [state, dispatch];
+// };
 
-const starredShowReducer = (currentStarred, action) => {
-  switch (action.type) {
-    case 'STAR':
-      return currentStarred.concat(action.showId);
-    case 'UNSTAR':
-      return currentStarred.filter(showId => showId !== action.showId);
-  }
-};
+// const starredShowReducer = (currentStarred, action) => {
+//   switch (action.type) {
+//     case 'STAR':
+//       return currentStarred.concat(action.showId);
+//     case 'UNSTAR':
+//       return currentStarred.filter(showId => showId !== action.showId);
+//   }
+// };
 const ShowGrid = ({ shows }) => {
-  const [starredShow, dispatchStarredShow] = usePresistedReducer(
-    starredShowReducer,
-    [],
-    'starredShows'
-  );
+  // const [starredShow, dispatchStarredShow] = usePresistedReducer(
+  //   starredShowReducer,
+  //   [],
+  //   'starredShows'
+  // );
+
+  const [starredShow, dispatchStarredShow] = useStarredShow();
   console.log({ starredShow });
   const onStarMeClick = showId => {
     const isStarred = starredShow.includes(showId);
@@ -51,6 +54,7 @@ const ShowGrid = ({ shows }) => {
           summary={data.show.summary}
           id={data.show.id}
           onStarMeClick={onStarMeClick}
+          isStarred={starredShow.includes(data.show.id)}
         />
       ))}
     </div>
