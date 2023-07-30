@@ -18,6 +18,7 @@ const Home = () => {
     enabled: !!filter,
     refetchOnWindowFocus: false,
   });
+
   // const [apiData, setApiData] = useState(null);
   // const [apiDataError, setApiDataError] = useState(null);
 

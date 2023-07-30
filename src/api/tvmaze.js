@@ -10,3 +10,8 @@ export const searchForPeople = query => getApi(`/search/people?q=${query}`);
 
 export const getShowById = showId =>
   getApi(`/shows/${showId}?embed[]=seasons&embed[]=cast`);
+
+export const getShowByIds = async showIds => {
+  const promises = showIds.map(showId => getApi(`/shows/${showId}`));
+  return await Promise.all(promises);
+};

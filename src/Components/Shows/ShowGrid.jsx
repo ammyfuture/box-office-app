@@ -31,7 +31,7 @@ const ShowGrid = ({ shows }) => {
   // );
 
   const [starredShow, dispatchStarredShow] = useStarredShow();
-  console.log({ starredShow });
+
   const onStarMeClick = showId => {
     const isStarred = starredShow.includes(showId);
 
