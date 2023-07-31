@@ -20,9 +20,9 @@ const Starred = () => {
   //   refetchOnWindowFocus: false,
   // });
 
-  if (starredShows.length === 0) {
-    return <div>No shows were starred</div>;
-  }
+  // if (starredShows.length === 0) {
+  //   return <div>No shows were starred</div>;
+  // }
   if (starredShows?.length > 0) {
     return <ShowGrid shows={starredShows} />;
   }

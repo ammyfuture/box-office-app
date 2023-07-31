@@ -5,21 +5,23 @@ import Home from './Pages/Home';
 import Starred from './Pages/Starred';
 import Show from './Pages/Show';
 import MainLayout from './Components/MainLayouts';
+import { GlobalTheme } from './theme';
 const queryClient = new QueryClient();
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <BrowserRouter>
-        <Routes>
-          <Route element={<MainLayout />}>
-            <Route path="/" element={<Home />} />
-            <Route path="/starred" element={<Starred />} />
-          </Route>
+      <GlobalTheme>
+        <BrowserRouter>
+          <Routes>
+            <Route element={<MainLayout />}>
+              <Route path="/" element={<Home />} />
+              <Route path="/starred" element={<Starred />} />
+            </Route>
 
-          <Route path="*" element={<div>Page Not Found</div>} />
-          <Route path="show/:showId" element={<Show />} />
+            <Route path="*" element={<div>Page Not Found</div>} />
+            <Route path="show/:showId" element={<Show />} />
 
-          {/* <Route path="/" element={<App />}>
+            {/* <Route path="/" element={<App />}>
           <Route index element={<Home />} />
           <Route path="teams" element={<Teams />}>
             <Route path=":teamId" element={<Team />} />
@@ -32,8 +34,9 @@ function App() {
           <Route path="/tos" element={<Tos />} />
         </Route>
         <Route path="contact-us" element={<Contact />} />  */}
-        </Routes>
-      </BrowserRouter>
+          </Routes>
+        </BrowserRouter>
+      </GlobalTheme>
     </QueryClientProvider>
   );
 }
