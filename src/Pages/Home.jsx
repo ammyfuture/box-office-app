@@ -4,6 +4,7 @@ import { searchForShows, searchForPeople } from '../api/tvmaze';
 import SearchForm from '../Components/SearchForm';
 import ShowsGrid from '../Components/Shows/ShowGrid';
 import ActorsGrid from '../Components/Actors/ActorGrid';
+import { TextCenter } from '../Components/common/TextCenter';
 
 const Home = () => {
   //the states
@@ -44,11 +45,11 @@ const Home = () => {
   // rendering the data on the page function
   const renderApiData = () => {
     if (apiDataError) {
-      return <div> Error Occured: {apiDataError.message}</div>;
+      return <TextCenter> Error Occured: {apiDataError.message}</TextCenter>;
     }
 
     if (apiData?.length === 0) {
-      return <div>No results</div>;
+      return <TextCenter>No results</TextCenter>;
     }
     if (apiData) {
       return apiData[0].show ? (

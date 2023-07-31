@@ -1,6 +1,7 @@
 // import { useEffect, useReducer } from 'react';
 import ShowCards from './ShowCards';
 import { useStarredShow } from '../../lib/useStarredShows';
+import { FlexGrid } from '../common/FlexGrid';
 
 // const usePresistedReducer = (reducer, initalState, localStorageKey) => {
 //   const [state, dispatch] = useReducer(reducer, initalState, inital => {
@@ -43,7 +44,7 @@ const ShowGrid = ({ shows }) => {
   };
 
   return (
-    <div>
+    <FlexGrid>
       {shows.map(data => (
         <ShowCards
           key={data.show.id}
@@ -57,7 +58,7 @@ const ShowGrid = ({ shows }) => {
           isStarred={starredShow.includes(data.show.id)}
         />
       ))}
-    </div>
+    </FlexGrid>
   );
 };
 
