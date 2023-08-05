@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 import Home from './Pages/Home';
@@ -9,9 +9,10 @@ import { GlobalTheme } from './theme';
 const queryClient = new QueryClient();
 function App() {
   return (
+    //all of a sudden all working before chnaging the browser to hash so lets see
     <QueryClientProvider client={queryClient}>
       <GlobalTheme>
-        <BrowserRouter>
+        <HashRouter>
           <Routes>
             <Route element={<MainLayout />}>
               <Route path="/" element={<Home />} />
@@ -35,7 +36,7 @@ function App() {
         </Route>
         <Route path="contact-us" element={<Contact />} />  */}
           </Routes>
-        </BrowserRouter>
+        </HashRouter>
       </GlobalTheme>
     </QueryClientProvider>
   );
